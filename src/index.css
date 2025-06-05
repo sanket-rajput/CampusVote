@@ -105,4 +105,36 @@
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-105;
   }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-emerald-400/25;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent;
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, 
+      rgba(59, 130, 246, 0.8) 0%, 
+      rgba(147, 51, 234, 0.8) 50%, 
+      rgba(59, 130, 246, 0.8) 100%);
+  }
 }
