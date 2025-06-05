@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Vote, TrendingUp, Users, Calendar } from "lucide-react";
+import { Vote, TrendingUp, Users, Calendar, Shield, Clock, BarChart3, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -8,9 +8,9 @@ import { Badge } from "@/components/ui/badge";
 
 const Results = () => {
   const presidentialResults = [
-    { name: "Alice Johnson", party: "Progressive Student Alliance", votes: 145, percentage: 62.0 },
-    { name: "Bob Smith", party: "Campus Unity Coalition", votes: 67, percentage: 28.6 },
-    { name: "Carol Davis", party: "Innovation Forward", votes: 22, percentage: 9.4 }
+    { name: "Alice Johnson", party: "Progressive Student Alliance", votes: 145, percentage: 62.0, color: "emerald" },
+    { name: "Bob Smith", party: "Campus Unity Coalition", votes: 67, percentage: 28.6, color: "blue" },
+    { name: "Carol Davis", party: "Innovation Forward", votes: 22, percentage: 9.4, color: "purple" }
   ];
 
   const sustainabilityResults = [
@@ -22,24 +22,33 @@ const Results = () => {
   const totalSustainabilityVotes = sustainabilityResults.reduce((sum, option) => sum + option.votes, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+      {/* Abstract Background Elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-400 rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
+        <div className="absolute top-40 right-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{animationDelay: "2s"}}></div>
+        <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{animationDelay: "4s"}}></div>
+      </div>
+
       {/* Header */}
-      <header className="bg-white/10 backdrop-blur-md border-b border-white/20">
+      <header className="relative z-10 bg-white/5 backdrop-blur-xl border-b border-white/10">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-3">
-              <Vote className="h-8 w-8 text-emerald-400" />
-              <h1 className="text-2xl font-bold text-white">CampusVote Results</h1>
+            <Link to="/" className="flex items-center space-x-3 group">
+              <div className="p-2 rounded-lg bg-gradient-to-r from-emerald-400 to-blue-400 shadow-lg group-hover:shadow-emerald-400/25 transition-all duration-300">
+                <Vote className="h-6 w-6 text-white" />
+              </div>
+              <h1 className="text-2xl font-bold text-white">Live Results</h1>
             </Link>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3">
               <Link to="/voter-login">
-                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
-                  Cast Your Vote
+                <Button className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white border-0 shadow-lg hover:shadow-emerald-400/25 transition-all duration-300">
+                  Cast Vote
                 </Button>
               </Link>
               <Link to="/admin-login">
-                <Button variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
-                  Admin Panel
+                <Button variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md">
+                  Admin
                 </Button>
               </Link>
             </div>
@@ -47,124 +56,138 @@ const Results = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-6 py-8">
-        {/* Live Results Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-white mb-4 animate-fade-in">
-            Live Election Results
+      <main className="relative z-10 container mx-auto px-6 py-8">
+        {/* Hero Stats */}
+        <div className="text-center mb-12">
+          <h2 className="text-5xl md:text-6xl font-bold text-transparent bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text mb-6 animate-fade-in">
+            Election Insights
           </h2>
-          <div className="flex items-center justify-center space-x-6 text-emerald-200">
-            <div className="flex items-center space-x-2">
-              <TrendingUp className="h-5 w-5" />
-              <span>Updated in real-time</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <TrendingUp className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-white">{totalPresidentialVotes + totalSustainabilityVotes}</div>
+              <div className="text-emerald-200 text-sm">Total Votes</div>
             </div>
-            <div className="flex items-center space-x-2">
-              <Users className="h-5 w-5" />
-              <span>{totalPresidentialVotes + totalSustainabilityVotes} total votes</span>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <Users className="h-8 w-8 text-blue-400 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-white">{((totalPresidentialVotes / 1250) * 100).toFixed(1)}%</div>
+              <div className="text-blue-200 text-sm">Turnout</div>
             </div>
-            <div className="flex items-center space-x-2">
-              <Calendar className="h-5 w-5" />
-              <span>Voting ends June 13, 2024</span>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <Clock className="h-8 w-8 text-purple-400 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-white">2</div>
+              <div className="text-purple-200 text-sm">Active Polls</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <Shield className="h-8 w-8 text-yellow-400 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-white">100%</div>
+              <div className="text-yellow-200 text-sm">Verified</div>
             </div>
           </div>
         </div>
 
-        {/* Election Status */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <Card className="bg-white/10 backdrop-blur-md border-white/20">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-white">Student Council President</CardTitle>
-                <Badge className="bg-emerald-600">Active</Badge>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2 text-emerald-200">
-                <p>Total Votes: {totalPresidentialVotes}</p>
-                <p>Turnout: {((totalPresidentialVotes / 1250) * 100).toFixed(1)}%</p>
-                <p>Ends: June 10, 2024</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white/10 backdrop-blur-md border-white/20">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-white">Sustainability Initiative</CardTitle>
-                <Badge className="bg-emerald-600">Active</Badge>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2 text-emerald-200">
-                <p>Total Votes: {totalSustainabilityVotes}</p>
-                <p>Turnout: {((totalSustainabilityVotes / 1250) * 100).toFixed(1)}%</p>
-                <p>Ends: June 13, 2024</p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Presidential Results */}
-        <Card className="bg-white/10 backdrop-blur-md border-white/20 mb-8 animate-fade-in">
+        {/* Presidential Race Visualization */}
+        <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border-white/20 mb-8 hover:shadow-2xl hover:shadow-emerald-400/10 transition-all duration-500 animate-fade-in">
           <CardHeader>
-            <CardTitle className="text-white text-xl">Student Council President Results</CardTitle>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <BarChart3 className="h-6 w-6 text-emerald-400" />
+                <CardTitle className="text-white text-xl">Student Council President</CardTitle>
+              </div>
+              <Badge className="bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0">
+                <CheckCircle className="h-4 w-4 mr-1" />
+                Live
+              </Badge>
+            </div>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              {presidentialResults.map((candidate, index) => (
-                <div key={candidate.name} className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-white font-semibold">{candidate.name}</h3>
-                      <p className="text-blue-300 text-sm">{candidate.party}</p>
+          <CardContent className="space-y-6">
+            {presidentialResults.map((candidate, index) => (
+              <div key={candidate.name} className="group">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-4">
+                    <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${
+                      candidate.color === 'emerald' ? 'from-emerald-400 to-emerald-500' :
+                      candidate.color === 'blue' ? 'from-blue-400 to-blue-500' :
+                      'from-purple-400 to-purple-500'
+                    } flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
+                      {candidate.name.split(' ').map(n => n[0]).join('')}
                     </div>
-                    <div className="text-right">
-                      <p className="text-white font-bold text-lg">{candidate.percentage}%</p>
-                      <p className="text-emerald-400 text-sm">{candidate.votes} votes</p>
+                    <div>
+                      <h3 className="text-white font-semibold text-lg">{candidate.name}</h3>
+                      <p className="text-gray-300 text-sm">{candidate.party}</p>
                     </div>
                   </div>
+                  <div className="text-right">
+                    <p className="text-white font-bold text-2xl">{candidate.percentage}%</p>
+                    <p className="text-emerald-400 text-sm font-medium">{candidate.votes} votes</p>
+                  </div>
+                </div>
+                <div className="relative">
                   <Progress 
                     value={candidate.percentage} 
-                    className={`h-3 ${index === 0 ? 'bg-emerald-200' : 'bg-blue-200'}`}
+                    className="h-4 bg-white/10 rounded-full overflow-hidden"
                   />
-                  {index === 0 && (
-                    <Badge className="bg-emerald-600 text-white">Leading</Badge>
-                  )}
+                  <div 
+                    className={`absolute top-0 left-0 h-full rounded-full bg-gradient-to-r ${
+                      candidate.color === 'emerald' ? 'from-emerald-400 to-emerald-500' :
+                      candidate.color === 'blue' ? 'from-blue-400 to-blue-500' :
+                      'from-purple-400 to-purple-500'
+                    } transition-all duration-1000 ease-out shadow-lg`}
+                    style={{ width: `${candidate.percentage}%` }}
+                  />
                 </div>
-              ))}
-            </div>
+                {index === 0 && (
+                  <Badge className="mt-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black border-0 font-medium">
+                    🏆 Leading
+                  </Badge>
+                )}
+              </div>
+            ))}
           </CardContent>
         </Card>
 
-        {/* Sustainability Results */}
-        <Card className="bg-white/10 backdrop-blur-md border-white/20 mb-8 animate-fade-in">
+        {/* Sustainability Initiative */}
+        <Card className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border-white/20 mb-8 hover:shadow-2xl hover:shadow-blue-400/10 transition-all duration-500 animate-fade-in">
           <CardHeader>
-            <CardTitle className="text-white text-xl">Campus Sustainability Initiative Results</CardTitle>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 rounded-lg bg-gradient-to-r from-green-400 to-emerald-500">
+                  <Vote className="h-5 w-5 text-white" />
+                </div>
+                <CardTitle className="text-white text-xl">Campus Sustainability Initiative</CardTitle>
+              </div>
+              <Badge className="bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0">Active</Badge>
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
               {sustainabilityResults.map((option, index) => (
-                <div key={option.option} className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className={`font-semibold text-lg ${option.color === 'emerald' ? 'text-emerald-400' : 'text-red-400'}`}>
+                <div key={option.option} className="relative group">
+                  <div className={`p-6 rounded-xl bg-gradient-to-br ${
+                    option.color === 'emerald' ? 'from-emerald-500/20 to-green-500/20 border-emerald-400/30' : 
+                    'from-red-500/20 to-pink-500/20 border-red-400/30'
+                  } border backdrop-blur-sm hover:scale-105 transition-all duration-300`}>
+                    <div className="text-center">
+                      <div className={`text-6xl font-bold mb-2 ${
+                        option.color === 'emerald' ? 'text-emerald-400' : 'text-red-400'
+                      }`}>
+                        {option.percentage}%
+                      </div>
+                      <h3 className={`text-xl font-semibold mb-2 ${
+                        option.color === 'emerald' ? 'text-emerald-300' : 'text-red-300'
+                      }`}>
                         {option.option}
                       </h3>
-                      <p className="text-blue-300 text-sm">
-                        {option.option === 'Yes' ? 'Support the initiative' : 'Do not support the initiative'}
+                      <p className="text-gray-300 text-sm mb-4">
+                        {option.option === 'Yes' ? '✓ Support Initiative' : '✗ Against Initiative'}
                       </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-white font-bold text-lg">{option.percentage}%</p>
-                      <p className="text-emerald-400 text-sm">{option.votes} votes</p>
+                      <div className="text-white font-medium">{option.votes} votes</div>
                     </div>
                   </div>
-                  <Progress 
-                    value={option.percentage} 
-                    className={`h-3 ${option.color === 'emerald' ? 'bg-emerald-200' : 'bg-red-200'}`}
-                  />
                   {index === 0 && option.percentage > 50 && (
-                    <Badge className="bg-emerald-600 text-white">Passing</Badge>
+                    <Badge className="absolute -top-2 -right-2 bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0">
+                      Passing ✓
+                    </Badge>
                   )}
                 </div>
               ))}
@@ -172,21 +195,37 @@ const Results = () => {
           </CardContent>
         </Card>
 
-        {/* Blockchain Verification */}
-        <Card className="bg-emerald-900/20 border-emerald-400/30">
-          <CardContent className="p-6">
-            <h3 className="text-emerald-300 font-semibold mb-4 flex items-center">
-              <Vote className="h-5 w-5 mr-2" />
-              Blockchain Verification
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4 text-sm">
-              <div>
-                <p className="text-emerald-200">Block Hash:</p>
-                <p className="text-emerald-400 font-mono break-all">0x7d865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc3749504ded97730</p>
+        {/* Blockchain Verification - Abstract Design */}
+        <Card className="bg-gradient-to-r from-emerald-900/20 via-blue-900/20 to-purple-900/20 border border-emerald-400/20 backdrop-blur-xl">
+          <CardContent className="p-8">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-3">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-400 to-blue-400 shadow-lg">
+                  <Shield className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-emerald-300 font-bold text-xl">Blockchain Security</h3>
               </div>
-              <div>
-                <p className="text-emerald-200">Last Updated:</p>
-                <p className="text-emerald-400">2024-06-05 14:23:07 UTC</p>
+              <Badge className="bg-green-500 text-white animate-pulse">Verified</Badge>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="space-y-2">
+                <p className="text-emerald-200 text-sm font-medium">Block Hash</p>
+                <div className="bg-black/30 rounded-lg p-3 border border-emerald-400/20">
+                  <p className="text-emerald-400 font-mono text-xs break-all">0x7d865e...d97730</p>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <p className="text-blue-200 text-sm font-medium">Network Status</p>
+                <div className="bg-black/30 rounded-lg p-3 border border-blue-400/20">
+                  <p className="text-blue-400 font-mono text-xs">Ethereum Mainnet</p>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <p className="text-purple-200 text-sm font-medium">Last Update</p>
+                <div className="bg-black/30 rounded-lg p-3 border border-purple-400/20">
+                  <p className="text-purple-400 font-mono text-xs">2 mins ago</p>
+                </div>
               </div>
             </div>
           </CardContent>
