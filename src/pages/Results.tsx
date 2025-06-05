@@ -66,22 +66,22 @@ const Results = () => {
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <TrendingUp className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">{totalPresidentialVotes + totalSustainabilityVotes}</div>
-              <div className="text-emerald-200 text-sm">Total Votes</div>
+              <div className="text-emerald-100 text-sm font-medium">Total Votes</div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <Users className="h-8 w-8 text-blue-400 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">{((totalPresidentialVotes / 1250) * 100).toFixed(1)}%</div>
-              <div className="text-blue-200 text-sm">Turnout</div>
+              <div className="text-blue-100 text-sm font-medium">Turnout</div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <Clock className="h-8 w-8 text-purple-400 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">2</div>
-              <div className="text-purple-200 text-sm">Active Polls</div>
+              <div className="text-purple-100 text-sm font-medium">Active Polls</div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <Shield className="h-8 w-8 text-yellow-400 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">100%</div>
-              <div className="text-yellow-200 text-sm">Verified</div>
+              <div className="text-yellow-100 text-sm font-medium">Verified</div>
             </div>
           </div>
         </div>
@@ -114,12 +114,12 @@ const Results = () => {
                     </div>
                     <div>
                       <h3 className="text-white font-semibold text-lg">{candidate.name}</h3>
-                      <p className="text-gray-300 text-sm">{candidate.party}</p>
+                      <p className="text-gray-200 text-sm font-medium">{candidate.party}</p>
                     </div>
                   </div>
                   <div className="text-right">
                     <p className="text-white font-bold text-2xl">{candidate.percentage}%</p>
-                    <p className="text-emerald-400 text-sm font-medium">{candidate.votes} votes</p>
+                    <p className="text-emerald-300 text-sm font-medium">{candidate.votes} votes</p>
                   </div>
                 </div>
                 <div className="relative">
@@ -169,16 +169,16 @@ const Results = () => {
                   } border backdrop-blur-sm hover:scale-105 transition-all duration-300`}>
                     <div className="text-center">
                       <div className={`text-6xl font-bold mb-2 ${
-                        option.color === 'emerald' ? 'text-emerald-400' : 'text-red-400'
+                        option.color === 'emerald' ? 'text-emerald-300' : 'text-red-300'
                       }`}>
                         {option.percentage}%
                       </div>
                       <h3 className={`text-xl font-semibold mb-2 ${
-                        option.color === 'emerald' ? 'text-emerald-300' : 'text-red-300'
+                        option.color === 'emerald' ? 'text-emerald-100' : 'text-red-100'
                       }`}>
                         {option.option}
                       </h3>
-                      <p className="text-gray-300 text-sm mb-4">
+                      <p className="text-gray-100 text-sm mb-4 font-medium">
                         {option.option === 'Yes' ? '✓ Support Initiative' : '✗ Against Initiative'}
                       </p>
                       <div className="text-white font-medium">{option.votes} votes</div>
@@ -203,28 +203,28 @@ const Results = () => {
                 <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-400 to-blue-400 shadow-lg">
                   <Shield className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-emerald-300 font-bold text-xl">Blockchain Security</h3>
+                <h3 className="text-emerald-200 font-bold text-xl">Blockchain Security</h3>
               </div>
               <Badge className="bg-green-500 text-white animate-pulse">Verified</Badge>
             </div>
             
             <div className="grid md:grid-cols-3 gap-6">
               <div className="space-y-2">
-                <p className="text-emerald-200 text-sm font-medium">Block Hash</p>
+                <p className="text-emerald-100 text-sm font-medium">Block Hash</p>
                 <div className="bg-black/30 rounded-lg p-3 border border-emerald-400/20">
-                  <p className="text-emerald-400 font-mono text-xs break-all">0x7d865e...d97730</p>
+                  <p className="text-emerald-300 font-mono text-xs break-all">0x7d865e...d97730</p>
                 </div>
               </div>
               <div className="space-y-2">
-                <p className="text-blue-200 text-sm font-medium">Network Status</p>
+                <p className="text-blue-100 text-sm font-medium">Network Status</p>
                 <div className="bg-black/30 rounded-lg p-3 border border-blue-400/20">
-                  <p className="text-blue-400 font-mono text-xs">Ethereum Mainnet</p>
+                  <p className="text-blue-300 font-mono text-xs">Ethereum Mainnet</p>
                 </div>
               </div>
               <div className="space-y-2">
-                <p className="text-purple-200 text-sm font-medium">Last Update</p>
+                <p className="text-purple-100 text-sm font-medium">Last Update</p>
                 <div className="bg-black/30 rounded-lg p-3 border border-purple-400/20">
-                  <p className="text-purple-400 font-mono text-xs">2 mins ago</p>
+                  <p className="text-purple-300 font-mono text-xs">2 mins ago</p>
                 </div>
               </div>
             </div>
