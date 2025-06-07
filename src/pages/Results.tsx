@@ -36,7 +36,7 @@ const Results = () => {
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-3 group">
               <div className="p-2 rounded-lg bg-gradient-to-r from-emerald-400 to-blue-400 shadow-lg group-hover:shadow-emerald-400/25 transition-all duration-300">
-                <Vote className="h-6 w-6 text-white" />
+                <Vote className="h-6 w-6 text-black" />
               </div>
               <h1 className="text-2xl font-bold text-white">Live Results</h1>
             </Link>
@@ -66,7 +66,7 @@ const Results = () => {
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <TrendingUp className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">{totalPresidentialVotes + totalSustainabilityVotes}</div>
-              <div className="text-emerald-100 text-sm font-medium">Total Votes</div>
+              <div className="text-emerald-500 text-sm font-medium">Total Votes</div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <Users className="h-8 w-8 text-blue-400 mx-auto mb-2" />
@@ -78,6 +78,7 @@ const Results = () => {
               <div className="text-2xl font-bold text-white">2</div>
               <div className="text-purple-100 text-sm font-medium">Active Polls</div>
             </div>
+
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
               <Shield className="h-8 w-8 text-yellow-400 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">100%</div>
@@ -92,9 +93,9 @@ const Results = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <BarChart3 className="h-6 w-6 text-emerald-400" />
-                <CardTitle className="text-white text-xl">Student Council President</CardTitle>
+                <CardTitle className="text-black text-xl">Student Council President</CardTitle>
               </div>
-              <Badge className="bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0">
+              <Badge className="bg-gradient-to-r from-emerald-500 to-green-500 text-black border-0">
                 <CheckCircle className="h-4 w-4 mr-1" />
                 Live
               </Badge>
@@ -109,17 +110,17 @@ const Results = () => {
                       candidate.color === 'emerald' ? 'from-emerald-400 to-emerald-500' :
                       candidate.color === 'blue' ? 'from-blue-400 to-blue-500' :
                       'from-purple-400 to-purple-500'
-                    } flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
+                    } flex items-center justify-center text-black font-bold text-lg shadow-lg`}>
                       {candidate.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
-                      <h3 className="text-white font-semibold text-lg">{candidate.name}</h3>
-                      <p className="text-gray-200 text-sm font-medium">{candidate.party}</p>
+                      <h3 className="text-black font-semibold text-lg">{candidate.name}</h3>
+                      <p className="text-gray-500 text-sm font-medium">{candidate.party}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-white font-bold text-2xl">{candidate.percentage}%</p>
-                    <p className="text-emerald-300 text-sm font-medium">{candidate.votes} votes</p>
+                    <p className="text-black font-bold text-2xl">{candidate.percentage}%</p>
+                    <p className="text-emerald-500 text-sm font-medium">{candidate.votes} votes</p>
                   </div>
                 </div>
                 <div className="relative">
@@ -152,11 +153,11 @@ const Results = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="p-2 rounded-lg bg-gradient-to-r from-green-400 to-emerald-500">
-                  <Vote className="h-5 w-5 text-white" />
+                  <Vote className="h-5 w-5 text-black" />
                 </div>
-                <CardTitle className="text-white text-xl">Campus Sustainability Initiative</CardTitle>
+                <CardTitle className="text-black text-xl">Campus Sustainability Initiative</CardTitle>
               </div>
-              <Badge className="bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0">Active</Badge>
+              <Badge className="bg-gradient-to-r from-emerald-500 to-green-500 text-black border-0">Active</Badge>
             </div>
           </CardHeader>
           <CardContent>
@@ -169,23 +170,23 @@ const Results = () => {
                   } border backdrop-blur-sm hover:scale-105 transition-all duration-300`}>
                     <div className="text-center">
                       <div className={`text-6xl font-bold mb-2 ${
-                        option.color === 'emerald' ? 'text-emerald-300' : 'text-red-300'
+                        option.color === 'emerald' ? 'text-emerald-500' : 'text-red-300'
                       }`}>
                         {option.percentage}%
                       </div>
                       <h3 className={`text-xl font-semibold mb-2 ${
-                        option.color === 'emerald' ? 'text-emerald-100' : 'text-red-100'
+                        option.color === 'emerald' ? 'text-emerald-900' : 'text-red-800'
                       }`}>
                         {option.option}
                       </h3>
-                      <p className="text-gray-100 text-sm mb-4 font-medium">
+                      <p className="text-gray-800 text-sm mb-4 font-medium">
                         {option.option === 'Yes' ? '✓ Support Initiative' : '✗ Against Initiative'}
                       </p>
-                      <div className="text-white font-medium">{option.votes} votes</div>
+                      <div className="text-black font-medium">{option.votes} votes</div>
                     </div>
                   </div>
                   {index === 0 && option.percentage > 50 && (
-                    <Badge className="absolute -top-2 -right-2 bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0">
+                    <Badge className="absolute -top-2 -right-2 bg-gradient-to-r from-emerald-500 to-green-500 text-black border-0">
                       Passing ✓
                     </Badge>
                   )}
@@ -201,28 +202,28 @@ const Results = () => {
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center space-x-3">
                 <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-400 to-blue-400 shadow-lg">
-                  <Shield className="h-6 w-6 text-white" />
+                  <Shield className="h-6 w-6 text-black" />
                 </div>
-                <h3 className="text-emerald-200 font-bold text-xl">Blockchain Security</h3>
+                <h3 className="text-emerald-900 font-bold text-xl">Blockchain Security</h3>
               </div>
-              <Badge className="bg-green-500 text-white animate-pulse">Verified</Badge>
+              <Badge className="bg-green-500 text-black animate-pulse">Verified</Badge>
             </div>
             
             <div className="grid md:grid-cols-3 gap-6">
               <div className="space-y-2">
-                <p className="text-emerald-100 text-sm font-medium">Block Hash</p>
+                <p className="text-emerald-500 text-sm font-medium">Block Hash</p>
                 <div className="bg-black/30 rounded-lg p-3 border border-emerald-400/20">
-                  <p className="text-emerald-300 font-mono text-xs break-all">0x7d865e...d97730</p>
+                  <p className="text-emerald-600 font-mono text-xs break-all">0x7d865e...d97730</p>
                 </div>
               </div>
               <div className="space-y-2">
-                <p className="text-blue-100 text-sm font-medium">Network Status</p>
+                <p className="text-blue-600 text-sm font-medium">Network Status</p>
                 <div className="bg-black/30 rounded-lg p-3 border border-blue-400/20">
                   <p className="text-blue-300 font-mono text-xs">Ethereum Mainnet</p>
                 </div>
               </div>
               <div className="space-y-2">
-                <p className="text-purple-100 text-sm font-medium">Last Update</p>
+                <p className="text-purple-600 text-sm font-medium">Last Update</p>
                 <div className="bg-black/30 rounded-lg p-3 border border-purple-400/20">
                   <p className="text-purple-300 font-mono text-xs">2 mins ago</p>
                 </div>

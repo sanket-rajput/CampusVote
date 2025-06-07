@@ -134,15 +134,15 @@ const Index = () => {
               <CardContent className="p-4 sm:p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
-                    <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors">Student Council President</h4>
-                    <p className="text-blue-100 mb-4 text-sm sm:text-base">Choose your next student body president</p>
+                    <h4 className="text-lg font-semibold text-black mb-2 group-hover:text-emerald-800 transition-colors">Student Council President</h4>
+                    <p className="text-blue-900 mb-4 text-sm sm:text-base">Choose your next student body president</p>
                   </div>
                   <Trophy className="h-6 w-6 text-yellow-400 animate-pulse" />
                 </div>
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0">
                   <div className="flex items-center">
                     <Clock className="h-4 w-4 text-emerald-400 mr-1" />
-                    <span className="text-emerald-400 font-semibold text-sm">Ends in 2 days</span>
+                    <span className="text-red-400 font-semibold text-sm">Ends in 2 days</span>
                   </div>
                   <Link to="/voter-login">
                     <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 hover-scale w-full sm:w-auto">
@@ -157,15 +157,15 @@ const Index = () => {
               <CardContent className="p-4 sm:p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
-                    <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">Campus Sustainability Initiative</h4>
-                    <p className="text-blue-100 mb-4 text-sm sm:text-base">Vote on proposed green campus policies</p>
+                    <h4 className="text-lg font-semibold text-black mb-2 group-hover:text-emerald-900 transition-colors">Campus Sustainability Initiative</h4>
+                    <p className="text-blue-900 mb-4 text-sm sm:text-base">Vote on proposed green campus policies</p>
                   </div>
                   <Shield className="h-6 w-6 text-green-400 animate-pulse" />
                 </div>
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0">
                   <div className="flex items-center">
                     <Clock className="h-4 w-4 text-emerald-400 mr-1" />
-                    <span className="text-emerald-400 font-semibold text-sm">Ends in 5 days</span>
+                    <span className="text-red-400 font-semibold text-sm">Ends in 5 days</span>
                   </div>
                   <Link to="/voter-login">
                     <Button size="sm" className="bg-blue-600 hover:bg-blue-700 hover-scale w-full sm:w-auto">

@@ -67,7 +67,7 @@ const Voting = () => {
           <CardContent className="p-8">
             <CheckCircle className="h-16 w-16 text-emerald-400 mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-white mb-4">Vote Recorded!</h2>
-            <p className="text-emerald-100 mb-6">
+            <p className="text-emerald-500 mb-6">
               Your votes have been successfully recorded on the blockchain. 
               Thank you for participating in campus democracy!
             </p>
@@ -129,7 +129,7 @@ const Voting = () => {
         {/* Presidential Election */}
         <Card className="bg-white/10 backdrop-blur-md border-white/20 mb-8 animate-fade-in">
           <CardHeader>
-            <CardTitle className="text-white text-xl">Student Council President</CardTitle>
+            <CardTitle className="text-black text-xl">Student Council President</CardTitle>
             <p className="text-emerald-200">Choose one candidate to represent the student body</p>
           </CardHeader>
           <CardContent>
